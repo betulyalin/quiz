@@ -10,7 +10,8 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 700;
   color: #666;
 }
 
@@ -19,13 +20,13 @@
   color: white;
   padding: 8px 16px;
    border-radius: 5px;
-  font-weight: bold;
-  font-size: 18px;
+  font-weight: 800;
+  font-size: 20px;
 }
 
 .question-text {
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 700;
      margin-bottom: 30px;
   color: #333;
   line-height: 1.5;
@@ -39,7 +40,8 @@
 
 .answer-btn {
   padding: 15px 20px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   background: white;
    border: 1px solid #ccc;
   border-radius: 5px;
@@ -53,8 +55,8 @@
 
 .score {
   text-align: center;
-  font-size: 18px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: 800;
   color: #ff7e5f;
   margin-top: 15px;
 }

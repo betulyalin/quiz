@@ -19,10 +19,15 @@ const Introduce = () => {
   return (
     <div className="introduce">
       <div className="introduce-container">
-        <img
-          src="https://st5.depositphotos.com/49078592/63930/i/450/depositphotos_639303912-stock-illustration-handwriting-text-trivia-conceptual-photo.jpg"
-          alt=""
-        />
+        <div className="intro-hero">
+          <div className="hero-icons">
+            <div className="hero-mark">?</div>
+            <div className="hero-title">Beni ne kadar taniyorsun?</div>
+            <div className="hero-mark">?</div>
+          </div>
+          <div className="hero-text">
+          </div>
+        </div>
         <Dropdown data={difficulties} setDiffuciltyChanged={setDifficultyChanged} />
         <div onClick={startQuiz} className="introduce-btn">Quizze basla</div>
       </div>

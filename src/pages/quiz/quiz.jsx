@@ -20,6 +20,35 @@ const Quiz = () => {
     const [score , setScore] = useState(0);
     const [counter, setCounter] = useState(0);
     const [modal , setModal] = useState(false);
+
+    const getResultMessage = (level, currentScore, total) => {
+      const percent = total > 0 ? (currentScore / total) * 100 : 0;
+      if (level === "medium") {
+        if (percent <= 40) {
+          return "Orta seviye icin dusuk kaldin. Biraz daha tanismaniz lazim.";
+        }
+        if (percent <= 70) {
+          return "Fena degil, orta seviyede idare eder.";
+        }
+        return "Tebrikler! Orta seviye icin cok iyi.";
+      }
+      if (level === "hard") {
+        if (percent <= 40) {
+          return "Zor seviyede baya zorlandin. Daha cok tanismaniz lazim.";
+        }
+        if (percent <= 70) {
+          return "Zor seviye icin guzel. Iyi gidiyorsun.";
+        }
+        return "Efsane! Zor seviyede harika sonuc.";
+      }
+      if (percent <= 40) {
+        return "Kolayda bile dusuk... arkadasligi bitirelim.";
+      }
+      if (percent <= 70) {
+        return "Eh iste. Kolay seviye icin idare eder.";
+      }
+      return "Tebrikler! Ama kolaydi zaten.";
+    };
     
   return (
     <div className="quiz">
@@ -27,11 +56,12 @@ const Quiz = () => {
        <div className="loading">Yükleniyor...</div>
      ) : modal ? (
        <div className="result">
-         <h1>quiz bittihadi gule gule</h1>
+         <h1>BİTTİ</h1>
          <div className="score-display">
-           <p>total puanın </p>
+           <p>SONUÇ </p>
            <h2>{score} / {questions.length}</h2>
            <p className="percentage">{Math.round((score / questions.length) * 100)}%</p>
+           <p>{getResultMessage(difficulty, score, questions.length)}</p>
          </div>
          <button onClick={() => window.location.href = '/'}>ana sayfaya don</button>
        </div>
