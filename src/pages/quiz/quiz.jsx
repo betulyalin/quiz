@@ -1,30 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./quiz.css";
-import * as api from "../../api/api.js";
-import { useParams } from "react-router-dom";
 import Question from "../../components/question.jsx";
+import { useParams } from "react-router-dom";
+import questionsEasy from "../../data/questions-easy.js";
+import questionsMedium from "../../data/questions-medium.js";
+import questionsHard from "../../data/questions-hard.js";
 
 const Quiz = () => {
-    const {difficulty, amount} = useParams();
-    const [questions, setQuestions] = useState([]);
+    const { difficulty } = useParams();
+    const questions = useMemo(() => {
+      if (difficulty === "medium") {
+        return questionsMedium;
+      }
+      if (difficulty === "hard") {
+        return questionsHard;
+      }
+      return questionsEasy;
+    }, [difficulty]);
     const [score , setScore] = useState(0);
     const [counter, setCounter] = useState(0);
     const [modal , setModal] = useState(false);
-
-    useEffect(() => {
-      const getdata = async () => {
-        try {
-          const data = await api.fetchQuizData(difficulty, amount);
-          console.log('API Response:', data);
-          setQuestions(data);
-        } catch (err) {
-          console.error('Hata:', err);
-        }
-      }
-      getdata();
-    }, [difficulty, amount]);
-    
-    console.log('Questions:', questions);
     
   return (
     <div className="quiz">
