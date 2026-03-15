@@ -43,6 +43,8 @@ const Question = ({ questions, score, setScore, counter, setCounter, modal, setM
     }, 1000);
 
     return () => clearTimeout(timer);
+  // onAnswerRecord omitted: would reset timer every render
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft, counter, questions.length, setCounter, setModal, modal, currentQuestion]);
   
   if (!currentQuestion) {
