@@ -56,29 +56,29 @@ const Quiz = () => {
       const percent = total > 0 ? (currentScore / total) * 100 : 0;
       if (level === "medium") {
         if (percent <= 40) {
-          return "Orta seviye icin dusuk kaldin. Biraz daha tanismaniz lazim.";
+          return "Biraz daha vakit gecirelim, birbirimizi daha iyi taniriz.";
         }
         if (percent <= 70) {
-          return "Fena degil, orta seviyede idare eder.";
+          return "Guzel gidiyorsun! Orta seviyede de iyi tanimissin.";
         }
-        return "Tebrikler! Orta seviye icin cok iyi.";
+        return "Tebrikler! Orta seviyede de cok iyi taniyorsun.";
       }
       if (level === "hard") {
         if (percent <= 40) {
-          return "Zor seviyede baya zorlandin. Daha cok tanismaniz lazim.";
+          return "Zor sorulardi, yine de denedin. Biraz daha vakit gecirelim.";
         }
         if (percent <= 70) {
-          return "Zor seviye icin guzel. Iyi gidiyorsun.";
+          return "Zor seviyede de guzel sonuc! Iyi tanimissin.";
         }
-        return "Efsane! Zor seviyede harika sonuc.";
+        return "Efsane! Zor seviyede de harika taniyorsun.";
       }
       if (percent <= 40) {
-        return "Kolayda bile dusuk... arkadasligi bitirelim.";
+        return "Biraz daha vakit gecirelim, birbirimizi daha iyi taniriz.";
       }
       if (percent <= 70) {
-        return "Eh iste. Kolay seviye icin idare eder.";
+        return "Fena degil! Tanışma yolumuz başarılı olmuş diyebiliriz arkadaşım.";
       }
-      return "Tebrikler! Ama kolaydi zaten.";
+      return "Tebrikler! Beni cok iyi taniyorsun.";
     };
     
   return (

@@ -42,7 +42,7 @@ const Introduce = () => {
           />
           {error && <p className="intro-name-error">{error}</p>}
         </div>
-        <div onClick={startQuiz} className="introduce-btn">Teste basla</div>
+        <div onClick={startQuiz} className="introduce-btn">Teste basla ve yap şovunu:))) </div>
       </div>
     </div>
   );
