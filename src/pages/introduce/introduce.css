@@ -69,6 +69,34 @@
   text-align: center;
 }
 
+.intro-name-field {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 12px;
+}
+
+.intro-name-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #7be1b5;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.intro-name-input:focus {
+  border-color: #2f9f72;
+  box-shadow: 0 0 0 3px rgba(47, 159, 114, 0.2);
+}
+
+.intro-name-error {
+  margin: 6px 0 0;
+  color: #c53030;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .introduce-btn {
   margin-top: 20px;
   padding: 10px 20px;

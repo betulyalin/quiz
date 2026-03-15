@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./question.css";
 
-const Question = ({ questions, score, setScore, counter, setCounter, modal, setModal }) => {
+const Question = ({ questions, score, setScore, counter, setCounter, modal, setModal, onAnswerRecord }) => {
   const QUESTION_TIME = 20;
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIME);
   
@@ -23,6 +23,13 @@ const Question = ({ questions, score, setScore, counter, setCounter, modal, setM
     }
 
     if (timeLeft <= 0) {
+      onAnswerRecord?.({
+        questionIndex: counter,
+        question: currentQuestion.question,
+        selectedAnswer: null,
+        correctAnswer: currentQuestion.correct_answer,
+        isCorrect: false,
+      });
       if (counter + 1 < questions.length) {
         setCounter((current) => current + 1);
       } else {
@@ -43,10 +50,18 @@ const Question = ({ questions, score, setScore, counter, setCounter, modal, setM
   }
   
   const handleAnswer = (answer) => {
-    if (answer === currentQuestion.correct_answer) {
+    const isCorrect = answer === currentQuestion.correct_answer;
+    if (isCorrect) {
       setScore((current) => current + 1);
     }
-    
+    onAnswerRecord?.({
+      questionIndex: counter,
+      question: currentQuestion.question,
+      selectedAnswer: answer,
+      correctAnswer: currentQuestion.correct_answer,
+      isCorrect,
+    });
+
     if (counter + 1 < questions.length) {
       setCounter((current) => current + 1);
     } else {

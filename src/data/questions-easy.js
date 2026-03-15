@@ -31,7 +31,7 @@ const questionsEasy = [
   },
   {
     question: "Hangi tatlıyı daha çok severim?",
-    answers: ["Baklava", "Sütlaç", "Şekarpare", "Islak Kek"],
+    answers: ["Baklava", "Sütlaç", "Şekerpare", "Islak Kek"],
     correct_answer: "Şekerpare"
   },
   {
@@ -46,7 +46,7 @@ const questionsEasy = [
   },
   {
     question: "En sevdiğim atıştırmalık hangisi?",
-    answers: ["Çikolata", "Cips", "Kuruyemiş", "Meyve"],
+    answers: ["Çikolata", "Cips", "Kuruyemiş", "Jelibon"],
     correct_answer: "Cips"
   },
   {
@@ -58,6 +58,11 @@ const questionsEasy = [
     question: "Eskiden oynadığım sporlardan birine profesyonel olarak geri dönmek istesem bu hangisi olurdu?",
     answers: ["Dart", "Voleybol", "Futbol", "Masa Tenisi"],
     correct_answer: "Futbol"
+  },
+  {
+    question: "En sevdiğim yemek hangisi?",
+    answers: ["Etli ekmek:)", "Makarna", "Hamburger", "Tavuk-Pilav"],
+    correct_answer: "Tavuk-Pilav"
   },
   {
     question: "Benim gitmek istediğim ülke nedir?",
@@ -91,13 +96,8 @@ const questionsEasy = [
   },
   {
     question: "Hangi tür filmleri izlemekten hoşlanmam?",
-    answers: ["Korku", "Romantik ", "Dram", "Gerilim"],
+    answers: ["Korku", "Romantik", "Dram", "Gerilim"],
     correct_answer: "Romantik"
-  },
-  {
-    question: "Evde iş yapmayı sever miyim?",
-    answers: ["Evet, çok severim", "Ara sıra yaparım", "Pek sevmem", "Hiç sevmem"],
-    correct_answer: "Hiç sevmem"
   },
   {
     question: "Hangi süper güce sahip olmak isterdim?",
@@ -122,7 +122,7 @@ const questionsEasy = [
   {
     question: "Hangi Manifest Kızıyım?",
     answers: ["Esin", "Sueda", "Zoktay", "Mina"],
-    correct_answer: "Sueda💚"
+    correct_answer: "Sueda"
   }
 ];
 

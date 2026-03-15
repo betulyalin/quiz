@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import "./introduce.css";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "../../components/dropdown.jsx";
 
 const Introduce = () => {
   const navigate = useNavigate();
-  const difficulties = ["easy", "medium", "hard"];
-  const [difficultyChanged, setDifficultyChanged] = useState("");
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
 
   const startQuiz = () => {
-    if (difficultyChanged) {
-      navigate(`/quiz/${difficultyChanged}`);
-    } else {
-      alert("Lutfen bir zorluk seviyesi secin!");
+    const trimmed = name.trim();
+    if (!trimmed) {
+      setError("Lutfen isminizi girin!");
+      return;
     }
+    setError("");
+    sessionStorage.setItem("quiz_user_name", trimmed);
+    navigate("/quiz/easy");
   };
 
   return (
@@ -28,8 +30,19 @@ const Introduce = () => {
           <div className="hero-text">
           </div>
         </div>
-        <Dropdown data={difficulties} setDiffuciltyChanged={setDifficultyChanged} />
-        <div onClick={startQuiz} className="introduce-btn">Quizze basla</div>
+        <div className="intro-name-field">
+          <input
+            type="text"
+            placeholder="Isminiz"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && startQuiz()}
+            className="intro-name-input"
+            maxLength={50}
+          />
+          {error && <p className="intro-name-error">{error}</p>}
+        </div>
+        <div onClick={startQuiz} className="introduce-btn">Teste basla</div>
       </div>
     </div>
   );

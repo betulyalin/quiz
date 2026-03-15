@@ -1,10 +1,23 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import "./quiz.css";
 import Question from "../../components/question.jsx";
 import { useParams } from "react-router-dom";
 import questionsEasy from "../../data/questions-easy.js";
 import questionsMedium from "../../data/questions-medium.js";
 import questionsHard from "../../data/questions-hard.js";
+
+const saveResult = async (payload) => {
+  try {
+    const res = await fetch("/api/save-result", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Kayit basarisiz");
+  } catch (err) {
+    console.warn("Sonuc kaydedilemedi:", err);
+  }
+};
 
 const Quiz = () => {
     const { difficulty } = useParams();
@@ -20,6 +33,24 @@ const Quiz = () => {
     const [score , setScore] = useState(0);
     const [counter, setCounter] = useState(0);
     const [modal , setModal] = useState(false);
+    const [answersLog, setAnswersLog] = useState([]);
+    const savedRef = useRef(false);
+
+    const onAnswerRecord = (record) => {
+      setAnswersLog((prev) => [...prev, record]);
+    };
+
+    useEffect(() => {
+      if (!modal || savedRef.current) return;
+      savedRef.current = true;
+      const name = sessionStorage.getItem("quiz_user_name") || "Isimsiz";
+      saveResult({
+        name,
+        score,
+        total: questions.length,
+        answers: answersLog,
+      });
+    }, [modal, score, questions.length, answersLog]);
 
     const getResultMessage = (level, currentScore, total) => {
       const percent = total > 0 ? (currentScore / total) * 100 : 0;
@@ -72,8 +103,9 @@ const Quiz = () => {
          setScore={setScore}
          counter={counter}
          setCounter={setCounter}
-         modal={modal} 
+         modal={modal}
          setModal={setModal}
+         onAnswerRecord={onAnswerRecord}
        />
      )}
     </div>
